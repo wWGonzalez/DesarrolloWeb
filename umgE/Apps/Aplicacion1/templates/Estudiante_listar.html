@@ -1,0 +1,49 @@
+{% extends 'crearEstudiante.html' %}
+
+{% block tablaEstudiante %}
+
+<head>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    text-decoration-line: white;
+    padding: 8px;
+
+
+tr:nth-child(even) {
+    background-color: #FFFFFF;
+}
+</style>
+</head>
+
+
+<html>
+
+
+
+<table border=4>
+
+
+<tr>
+	<td>Nombre<td>Carne<td>Direccion</td>
+</tr>
+{% for i in obj %}
+
+<tr>
+	<td>{{i.nombre}}<td>{{i.carne}}<td>{{i.direccion}}</td>
+</tr>
+{% endfor %}
+
+</table>
+</h2>
+<A HREF="{% url 'App1:addEstudiante' %}">Agregar un Nuevo estudiante</A>
+
+</html>
+{% endblock %}

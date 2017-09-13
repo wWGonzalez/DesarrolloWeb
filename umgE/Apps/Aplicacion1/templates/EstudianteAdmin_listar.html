@@ -1,0 +1,26 @@
+{% extends 'crearEstudianteAdmin.html' %}
+
+{% block tablaAdmin %}
+
+<html>
+<h1>Tabla Estudiantes Administradores</h1>
+
+
+<table border=4>
+
+<tr>
+	<td>Nombre<td>Carne<td>Direccion</td>
+</tr>
+{% for i in obj %}
+
+<tr>
+	<td>{{i.nombre}}<td>{{i.carne}}<td>{{i.direccion}}</td>
+</tr>
+{% endfor %}
+
+</table>
+
+<A HREF="{% url 'App1:AddEstudianteAdmin' %}">Agregar un Nuevo estudiante</A>
+
+</html>
+{% endblock %}

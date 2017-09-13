@@ -1,0 +1,46 @@
+
+
+<html>
+
+<head>
+
+		{% load static %}
+		
+		<link rel="stylesheet" href="{% static 'css/est.css' %}">
+
+
+</head>
+
+<body>
+
+<h1 align="center">Pagina Principal</h1>
+<h2 align="center"><img src="{%static 'image/marianoLogo.png'%}" ></h2>
+
+<h2 align="center">
+
+<div>
+    <a href="{% url 'App1:home' %}" class="btn btn-default">Pagina Principal</a>
+    <a href="{% url 'App1:addEstudiante' %}" class="btn btn-primary">Agregar Estudiante</a>
+    <a href="{%url 'App1:AddEstudianteAdmin' %}" class="btn btn-success">Agregar Administrador</a>
+    <a href="{%url 'App1:Articulo' %}" class="btn btn-info">Agregar Articulo</a>
+    <a href="{%url 'App1:Comentario' %}" class="btn btn-warning">Agregar Comentario</a>
+    <a href="{% url 'App1:AcercaDe' %}" class="btn btn-default">Acerca De</a>
+    <a href="{% url 'App1:login'%}" class="btn btn-primary">Login</a>
+    
+</h2>
+
+
+</body>
+<!--
+<link rel="stylesheet" href="<//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js">﻿
+<scrip src="https://code.jquery.com/jquery-1.10.2.min.js"></scrip>
+<script src="{% static 'js/est.js'%}"></script>
+-->
+
+{% block contenido %} {% endblock %}
+
+
+
+
+
+</html>
