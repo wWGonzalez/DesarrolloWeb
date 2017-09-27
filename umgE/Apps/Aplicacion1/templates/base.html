@@ -2,11 +2,21 @@
 
 <html>
 
+
+
+
+
+
 <head>
+
+
+
+
 
 		{% load static %}
 		
 		<link rel="stylesheet" href="{% static 'css/est.css' %}">
+ 
 
 
 </head>
@@ -14,6 +24,8 @@
 <body>
 
 <h1 align="center">Pagina Principal</h1>
+
+
 <h2 align="center"><img src="{%static 'image/marianoLogo.png'%}" ></h2>
 
 <h2 align="center">
@@ -25,7 +37,20 @@
     <a href="{%url 'App1:Articulo' %}" class="btn btn-info">Agregar Articulo</a>
     <a href="{%url 'App1:Comentario' %}" class="btn btn-warning">Agregar Comentario</a>
     <a href="{% url 'App1:AcercaDe' %}" class="btn btn-default">Acerca De</a>
+    <a>
+{% if user.is_authenticated %}
+<a href="{% url 'App1:logout'%}" class="btn btn-primary">Cerrar Sesion</a>
+<h3>Usuario Actual: <br>
+{{ user.username }} 
+
+ </h3>
+{% else %}
     <a href="{% url 'App1:login'%}" class="btn btn-primary">Login</a>
+{% endif %}
+</a>
+
+
+
     
 </h2>
 

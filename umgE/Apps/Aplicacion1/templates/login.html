@@ -7,11 +7,12 @@
  {% csrf_token %}
 
 User <br>
-<input type="text" name="User">
+{{ form.username }}
 <br>
 Password <br>
-<input type="text" name="Password">
+{{ form.password }}
  <br><br>
+
 <button type="submit" value="Submit" class="btn btn-primary" >Ingresar</button>
 
 </h3>

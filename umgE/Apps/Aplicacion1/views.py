@@ -11,6 +11,11 @@ from django.core.urlresolvers import reverse_lazy
 from .forms import EstudianteForm,EstudianteAdminForm,ArticuloForm,ComentarioForm
 from .models import Estudiante,EstudianteAdmin,Articulo,Comentario
 
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login
+from django.views.generic import FormView
+from django.contrib.auth import logout
+from django.shortcuts import redirect
 
 def EstudianteList(request):
 	obj = Estudiante.objects.all()
@@ -62,8 +67,25 @@ class AdministradoresView(TemplateView):
 class AcercaDeView(TemplateView):
 	template_name='AcercaDe.html'
 
-class LoginView(TemplateView):
+class LoginView(FormView):
 	template_name='login.html'
+	form_class = AuthenticationForm
+	success_url = reverse_lazy('App1:home')
+
+	def form_valid(self, form):
+		login(self.request, form.get_user())
+		return super(LoginView, self).form_valid(form)
+
+
+def logout_view(request):
+	logout(request)
+	return redirect('App1:home')
+	
+
+
+
+
+
 
 #class CrearEstudianteView(CreateView):
 #template_name = 'crearEstudiante.html'
