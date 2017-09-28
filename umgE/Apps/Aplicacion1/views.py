@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 #from django.views.generic.edit import FormView
 
 
+
 from django.shortcuts import render
 from django.views.generic import TemplateView,CreateView
 from django.core.urlresolvers import reverse_lazy
@@ -12,6 +13,8 @@ from .forms import EstudianteForm,EstudianteAdminForm,ArticuloForm,ComentarioFor
 from .models import Estudiante,EstudianteAdmin,Articulo,Comentario
 
 from django.contrib.auth.forms import AuthenticationForm
+
+
 from django.contrib.auth import login
 from django.views.generic import FormView
 from django.contrib.auth import logout
@@ -80,7 +83,8 @@ class LoginView(FormView):
 def logout_view(request):
 	logout(request)
 	return redirect('App1:home')
-	
+
+
 
 
 

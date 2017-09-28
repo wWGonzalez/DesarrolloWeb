@@ -18,6 +18,7 @@ urlpatterns = [
 	url(r'^login$', LoginView.as_view(),name='login'),
 	url(r'^logout$', logout_view,name='logout'),
 
+
 	#url(r'^logout/$', auth_views.logout, {'next_page': 'App1:home'}, name='logout'),
 
 	url(r'^Articulo$', ArticuloView.as_view(),name='Articulo'),
