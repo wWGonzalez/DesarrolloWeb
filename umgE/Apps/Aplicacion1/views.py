@@ -6,7 +6,7 @@ from __future__ import unicode_literals
 
 
 from django.shortcuts import render
-from django.views.generic import TemplateView,CreateView
+from django.views.generic import TemplateView,CreateView,UpdateView,DeleteView
 from django.core.urlresolvers import reverse_lazy
 
 from .forms import EstudianteForm,EstudianteAdminForm,ArticuloForm,ComentarioForm
@@ -20,39 +20,40 @@ from django.views.generic import FormView
 from django.contrib.auth import logout
 from django.shortcuts import redirect
 
+
+
 def EstudianteList(request):
-	obj = Estudiante.objects.all()
-	for entrada in obj:
-		obj_nombre = entrada.nombre
-		obj_direccion = entrada.direccion
-		obj_carne = entrada.carne
-
-	context = {
-	"obj":   obj,
-	"obj_nombre":obj_nombre,
-	"obj_direccion":obj_direccion,
-	"obj_carne":obj_carne,
-
-	}
+	estudiantes = Estudiante.objects.all()
+	context = {'estudiantes':estudiantes}
 	return render(request,"Estudiante_listar.html",context)
+
+#def EstudianteList(request):
+#	obj = Estudiante.objects.all()
+#	for entrada in obj:
+#		obj_nombre = entrada.nombre
+#		obj_direccion = entrada.direccion
+#		obj_carne = entrada.carne
+
+#	context = {
+#	"obj":   obj,
+#	"obj_nombre":obj_nombre,
+#	"obj_direccion":obj_direccion,
+#	"obj_carne":obj_carne,
+
+#	}
+#	return render(request,"Estudiante_listar.html",context)
 
 
 def EstudianteListAdmin(request):
 	obj = EstudianteAdmin.objects.all()
-	for entrada in obj:
-		obj_nombre = entrada.nombre
-		obj_direccion = entrada.direccion
-		obj_carne = entrada.carne
-
-	context = {
-	"obj":   obj,
-	"obj_nombre":obj_nombre,
-	"obj_direccion":obj_direccion,
-	"obj_carne":obj_carne,
-
-	}
+	context = {'obj':obj}
 	return render(request,"EstudianteAdmin_listar.html",context)
 
+
+def ArticuloList(request):
+	articulos = Articulo.objects.all()
+	context = {'articulos':articulos}
+	return render(request,"Articulo_List.html",context)
 
 
 
@@ -102,6 +103,10 @@ class crearEstudianteView(CreateView):
 	success_url = reverse_lazy('App1:home')
 
 
+
+
+
+
 class crearEstudainteAdminView(CreateView):
 	template_name = 'crearEstudianteAdmin.html'
 	form_class = EstudianteAdminForm
@@ -111,10 +116,50 @@ class crearEstudainteAdminView(CreateView):
 class ArticuloView(CreateView):
 	template_name = 'Articulo.html'
 	form_class = ArticuloForm
-	success_url = reverse_lazy('App1:home')
+	success_url = reverse_lazy('App1:ArticuloList')
 
 
 class ComentarioView(CreateView):
 	template_name = 'Comentario.html'
 	form_class = ComentarioForm
 	success_url = reverse_lazy('App1:home')
+
+
+
+
+
+	#Vistas para Editar
+class EditarEstudianteView(UpdateView):
+	template_name = 'crearEstudiante.html'
+	model = Estudiante
+	form_class = EstudianteForm
+	success_url = reverse_lazy('App1:EstudianteList')
+
+class EditarEstudianteAdminView(UpdateView):
+	template_name = 'crearEstudianteAdmin.html'
+	model = EstudianteAdmin
+	form_class = EstudianteAdminForm
+	success_url = reverse_lazy('App1:EstudianteListAdmin')
+
+class EditarArticuloView(UpdateView):
+	template_name = 'Articulo.html'
+	model = Articulo
+	form_class = ArticuloForm
+	success_url = reverse_lazy('App1:ArticuloList')
+
+
+	#Vistaas para eliminar
+class EliminarEstudianteView(DeleteView):
+	template_name = 'Eliminar.html'
+	model = Estudiante
+	success_url = reverse_lazy('App1:EstudianteList')
+
+class EliminarEstudianteAdminView(DeleteView):
+	template_name = 'Eliminar.html'
+	model = EstudianteAdmin
+	success_url = reverse_lazy('App1:EstudianteListAdmin')
+
+class EliminarArticuloView(DeleteView):
+	template_name = 'Eliminar.html'
+	model = Articulo
+	success_url = reverse_lazy('App1:ArticuloList')

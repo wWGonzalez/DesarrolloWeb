@@ -17,7 +17,20 @@ class EstudianteAdminForm(forms.ModelForm):
 class ArticuloForm(forms.ModelForm):
 	class Meta:
 		model = Articulo
-		fields = '__all__'
+		fields = [
+		'titulo',
+		'articulo',
+		'fecha',
+		'estudiante',
+		'estudianteAdmin',
+				]
+
+		widgets = {
+            'articulo': forms.Textarea(attrs={'cols': 24, 'rows': 6}),
+        }
+
+
+
 
 class ComentarioForm(forms.ModelForm):
 	class Meta:

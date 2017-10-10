@@ -1,14 +1,16 @@
 
 
 from django.conf.urls import url,include
-from .views import IndexView,EstudianteView,EstudianteList,EstudianteListAdmin,AdministradoresView,AcercaDeView,crearEstudianteView,crearEstudainteAdminView,LoginView,logout_view,ArticuloView,ComentarioView
+from .views import EliminarArticuloView,EliminarEstudianteAdminView,ArticuloList,EliminarEstudianteView,EditarArticuloView,EditarEstudianteAdminView,EstudianteList,EstudianteListAdmin,IndexView,EstudianteView,AdministradoresView,AcercaDeView,crearEstudianteView,crearEstudainteAdminView,LoginView,logout_view,ArticuloView,ComentarioView,EditarEstudianteView
 #from django.contrib.auth import views as auth_views
 
 urlpatterns = [
 	url(r'^$', IndexView.as_view(),name='home'),
 	url(r'^Estudiante$', EstudianteView.as_view(),name='Estudiante'),
+	url(r'^ArticuloList$', ArticuloList,name='ArticuloList'),
 	url(r'^EstudianteList$', EstudianteList,name='EstudianteList'),
 	url(r'^EstudianteListAdmin$', EstudianteListAdmin,name='EstudianteListAdmin'),
+
 
 
 	url(r'^Administradores$', AdministradoresView.as_view(),name='Administradores'),
@@ -21,6 +23,14 @@ urlpatterns = [
 
 	#url(r'^logout/$', auth_views.logout, {'next_page': 'App1:home'}, name='logout'),
 
+
+	url(r'^EliminarEstudiante/(?P<pk>\d+)/$', EliminarEstudianteView.as_view(), name='DeleteEstudiante'),
+	url(r'^EliminarEstudianteAdmin/(?P<pk>\d+)/$', EliminarEstudianteAdminView.as_view(), name='DeleteAdmin'),
+	url(r'^EliminarArticuloAdmin/(?P<pk>\d+)/$', EliminarArticuloView.as_view(), name='DeleteArticulo'),
+
+	url(r'^EditarArticulo/(?P<pk>\d+)/$', EditarArticuloView.as_view(), name='EditarArticulo'),
+	url(r'^EditarEstudianteAdmin/(?P<pk>\d+)/', EditarEstudianteAdminView.as_view(), name='EditarEstudianteAdmin'),
+	url(r'^EditarEstudiante/(?P<pk>\d+)/$', EditarEstudianteView.as_view(), name='EditarEstudiante'),
 	url(r'^Articulo$', ArticuloView.as_view(),name='Articulo'),
 	url(r'^Comentario$', ComentarioView.as_view(),name='Comentario'),
 

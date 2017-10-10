@@ -31,12 +31,15 @@
 <h2 align="center">
 
 <div>
+{{ object.titulo}}
+<h1>{{ user.username }} </h1>
     <a href="{% url 'App1:home' %}" class="btn btn-default">Pagina Principal</a>
     <a href="{% url 'App1:addEstudiante' %}" class="btn btn-primary">Agregar Estudiante</a>
     <a href="{%url 'App1:AddEstudianteAdmin' %}" class="btn btn-success">Agregar Administrador</a>
     <a href="{%url 'App1:Articulo' %}" class="btn btn-info">Agregar Articulo</a>
     <a href="{%url 'App1:Comentario' %}" class="btn btn-warning">Agregar Comentario</a>
     <a href="{% url 'App1:AcercaDe' %}" class="btn btn-default">Acerca De</a>
+
     <a>
 {% if user.is_authenticated %}
 <a href="{% url 'App1:logout'%}" class="btn btn-primary">Cerrar Sesion</a>

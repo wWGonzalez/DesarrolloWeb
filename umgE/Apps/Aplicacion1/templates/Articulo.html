@@ -2,28 +2,33 @@
 
 {% block contenido %}
 
-<h3 align="left">
-<form method="POST">
- {% csrf_token %}
+	<h3 align="left">
+		<form method="POST">
+		 {% csrf_token %}
 
-Titulo <br>
-{{ form.titulo }}
-<br>
-Contenido del Articulo <br>
-{{ form.articulo }}
-<br>
-Fecha <br>
- {{ form.fecha }}
- <br>
- Estudiante <br>
-{{ form.estudiante }}
-<br>
- Estudiante Que Aprueba<br>
-{{ form.estudianteAdmin }}
- <br><br>
-<button type="submit" value="Submit" class="btn btn-primary">Guardar</button>
+			Titulo <br>
+			{{ form.titulo }}
+			<br>
+			Contenido del Articulo <br>
+			{{ form.articulo }}
+			<br>
+			Fecha <br>
+			 {{ form.fecha }}
+			 <br>
+			 Estudiante <br>
+			{{ form.estudiante }}
+			<br>
+			 Estudiante Que Aprueba<br>
+			{{ form.estudianteAdmin }}
+			 <br><br>
+			<button type="submit" value="Submit" class="btn btn-primary">Guardar</button>
+	</h3>
 
-</h3>
+
+<a href="{% url 'App1:ArticuloList' %}"> Listar Articulos</a>
+
+{% block ListarArticulo %} {% endblock %}
+
 </form>
 
 
