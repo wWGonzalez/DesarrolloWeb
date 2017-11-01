@@ -15,8 +15,8 @@
 			<td>Accion 2</td>
 		</tr>
 
-		{% if estudiantes %}
-				{% for est in estudiantes %}
+		{% if object_list %}
+				{% for est in object_list %}
 
 		<tr class="active">
 			<td>{{est.nombre}}</td>
@@ -34,6 +34,18 @@
 		{% endif %}
 
 	</table>
+	<ul>
+			<li>
+				{% if page_obj.has_previous %}
+				<a href="?page={{ page_obj.previous_page_number }}">Previus</a>
+				{% endif %}
+			</li>
+			<li>
+				{% if page_obj.has_next %}
+				<a href="?page={{ page_obj.next_page_number }}">Next</a>
+				{% endif %}
+			</li>
+		</ul>
 
 </div>
 

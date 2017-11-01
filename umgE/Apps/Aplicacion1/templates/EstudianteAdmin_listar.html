@@ -12,9 +12,8 @@
 			<td>Nombre<td>Carne<td>Direccion<td>Accion1<td>Accion2</td>
 		</tr class="success">
 
-
-		{% for est in obj %}
-
+		{% if object_list %}
+		{% for est in object_list %}
 		<tr class="active">
 			<td>{{est.nombre}}
 			<td>{{est.direccion}}
@@ -25,8 +24,23 @@
 		</tr>
 		{% endfor %}
 	</table>
-
+		{% else %}
+		<h1>No se Encontraron Registros de Estudiante</h1>
+		{% endif%}
 </div>
+
+<ul>
+			<li>
+				{% if page_obj.has_previous %}
+				<a href="?page={{ page_obj.previous_page_number }}">Previus</a>
+				{% endif %}
+			</li>
+			<li>
+				{% if page_obj.has_next %}
+				<a href="?page={{ page_obj.next_page_number }}">Next</a>
+				{% endif %}
+			</li>
+		</ul>
 
 <A HREF="{% url 'App1:AddEstudianteAdmin' %}" class="btn btn-default">Agregar un Nuevo estudiante</A>
 

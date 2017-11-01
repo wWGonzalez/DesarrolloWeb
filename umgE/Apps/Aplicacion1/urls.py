@@ -1,15 +1,16 @@
 
 
 from django.conf.urls import url,include
-from .views import EliminarArticuloView,EliminarEstudianteAdminView,ArticuloList,EliminarEstudianteView,EditarArticuloView,EditarEstudianteAdminView,EstudianteList,EstudianteListAdmin,IndexView,EstudianteView,AdministradoresView,AcercaDeView,crearEstudianteView,crearEstudainteAdminView,LoginView,logout_view,ArticuloView,ComentarioView,EditarEstudianteView
+from .views import EstudianteAdminListView,EliminarArticuloView,EliminarEstudianteAdminView,ArticuloList,EliminarEstudianteView,EditarArticuloView,EditarEstudianteAdminView,EstudianteList,EstudianteListAdmin,IndexView,EstudianteView,AdministradoresView,AcercaDeView,crearEstudianteView,crearEstudainteAdminView,LoginView,logout_view,ArticuloView,ComentarioView,EditarEstudianteView
+from .views import EstudianteListView
 #from django.contrib.auth import views as auth_views
 
 urlpatterns = [
 	url(r'^$', IndexView.as_view(),name='home'),
 	url(r'^Estudiante$', EstudianteView.as_view(),name='Estudiante'),
 	url(r'^ArticuloList$', ArticuloList,name='ArticuloList'),
-	url(r'^EstudianteList$', EstudianteList,name='EstudianteList'),
-	url(r'^EstudianteListAdmin$', EstudianteListAdmin,name='EstudianteListAdmin'),
+	url(r'^EstudianteList$', EstudianteListView.as_view(),name='EstudianteList'),
+	url(r'^EstudianteListAdmin$', EstudianteAdminListView.as_view(),name='EstudianteListAdmin'),
 
 
 

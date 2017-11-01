@@ -6,7 +6,7 @@ from __future__ import unicode_literals
 
 
 from django.shortcuts import render
-from django.views.generic import TemplateView,CreateView,UpdateView,DeleteView
+from django.views.generic import TemplateView,CreateView,UpdateView,DeleteView,ListView
 from django.core.urlresolvers import reverse_lazy
 
 from .forms import EstudianteForm,EstudianteAdminForm,ArticuloForm,ComentarioForm
@@ -26,6 +26,7 @@ def EstudianteList(request):
 	estudiantes = Estudiante.objects.all()
 	context = {'estudiantes':estudiantes}
 	return render(request,"Estudiante_listar.html",context)
+
 
 #def EstudianteList(request):
 #	obj = Estudiante.objects.all()
@@ -48,6 +49,9 @@ def EstudianteListAdmin(request):
 	obj = EstudianteAdmin.objects.all()
 	context = {'obj':obj}
 	return render(request,"EstudianteAdmin_listar.html",context)
+
+
+
 
 
 def ArticuloList(request):
@@ -106,7 +110,7 @@ class crearEstudianteView(CreateView):
 
 
 
-
+	#Vistas para Crear
 class crearEstudainteAdminView(CreateView):
 	template_name = 'crearEstudianteAdmin.html'
 	form_class = EstudianteAdminForm
@@ -124,6 +128,19 @@ class ComentarioView(CreateView):
 	form_class = ComentarioForm
 	success_url = reverse_lazy('App1:home')
 
+
+
+	#Vistas para Listar
+class EstudianteAdminListView(ListView):
+	model = EstudianteAdmin
+	template_name = 'EstudianteAdmin_listar.html'
+	paginate_by = 1
+
+
+class EstudianteListView(ListView):
+	model = Estudiante
+	template_name = 'Estudiante_listar.html'
+	paginate_by = 1
 
 
 
