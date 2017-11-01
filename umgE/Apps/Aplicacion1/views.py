@@ -22,6 +22,7 @@ from django.shortcuts import redirect
 
 
 
+
 def EstudianteList(request):
 	estudiantes = Estudiante.objects.all()
 	context = {'estudiantes':estudiantes}
